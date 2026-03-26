@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: theme('colors.surface.border');
+  }
+  body {
+    @apply bg-white text-neutral-900 font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+  /* Japanese text line-height adjustment */
+  :lang(ja) {
+    line-height: 1.75;
+    word-break: break-all;
+  }
+}
+
+@layer components {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #c0c2c4 transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #c0c2c4;
+    border-radius: 3px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #8e9094;
+  }
+
+  .hidden-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hidden-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Frozen column shadow */
+  .frozen-shadow {
+    box-shadow: 4px 0 8px -2px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Gantt bar styles */
+  .gantt-bar {
+    @apply rounded-sm h-7 flex items-center px-2 text-xs font-medium text-white truncate cursor-pointer;
+    transition: opacity 150ms ease, transform 150ms ease;
+  }
+  .gantt-bar:hover {
+    opacity: 0.85;
+    transform: scaleY(1.1);
+  }
+  .gantt-bar-tentative {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 255, 255, 0.2) 4px,
+      rgba(255, 255, 255, 0.2) 8px
+    );
+  }
+
+  /* Kanban column */
+  .kanban-col {
+    @apply bg-surface-muted rounded-card min-w-[280px] max-w-[320px] flex flex-col;
+  }
+
+  /* KPI card hover */
+  .kpi-card {
+    @apply bg-white rounded-card border border-surface-border p-5 transition-shadow duration-150;
+  }
+  .kpi-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Density variants */
+  .density-compact .table-row { @apply h-8 text-caption; }
+  .density-default .table-row { @apply h-10 text-body; }
+  .density-comfortable .table-row { @apply h-12 text-body; }
+}
+
+/* Transition utilities */
+.transition-micro { transition: all 150ms ease; }
+.transition-panel { transition: all 250ms ease-out; }
+
+/* Panel slide-in from right */
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+.panel-slide-in-right {
+  animation: slideInRight 200ms ease-out;
+}
