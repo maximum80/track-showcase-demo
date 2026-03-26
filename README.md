@@ -95,26 +95,11 @@ This template is designed to be extended using Claude Code with the **`mock-ui-d
 
 ### Setup
 
-1. Make sure Claude Code is installed: `npm i -g @anthropic-ai/claude-code`
-2. Copy the shared skills submodule into this project:
-
 ```sh
-git submodule add git@github.com:givery-technology/track-common-ai-skills.git .claude/shared
-mkdir -p .claude/skills
-cd .claude/skills
-ln -s ../shared/skills/mock-ui-design-system mock-ui-design-system
-```
+# Install Claude Code
+npm i -g @anthropic-ai/claude-code
 
-Or if the submodule is already configured:
-
-```sh
-git submodule update --init
-# Then symlink as above
-```
-
-3. Open Claude Code in this directory:
-
-```sh
+# Open Claude Code in this directory
 claude
 ```
 
@@ -122,7 +107,7 @@ claude
 
 The `mock-ui-design-system` skill teaches Claude the full design system — colors, typography, component APIs, layout conventions, i18n patterns, and the panel stack — so every page it generates matches the existing shell exactly.
 
-Claude loads it automatically when you ask it to build anything in the `mock/` folder. You can also trigger it explicitly:
+The skill is already included in `.claude/skills/`. Just start prompting:
 
 ```
 Build a Talent Pool page with a searchable table, status badges, and a detail panel that slides in on row click.
