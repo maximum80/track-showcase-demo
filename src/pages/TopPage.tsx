@@ -22,18 +22,18 @@ const MODULE_CONFIG: Record<Module, {
   },
   recruiting: {
     icon: Users,
-    color: 'bg-amber-500',
-    bgLight: 'bg-amber-50',
-    borderColor: 'border-amber-200',
-    textColor: 'text-amber-700',
-    description: 'アセスメント配信・ワークフロー・AIインタビュー評価',
-  },
-  learning: {
-    icon: BookOpen,
     color: 'bg-emerald-600',
     bgLight: 'bg-emerald-50',
     borderColor: 'border-emerald-200',
     textColor: 'text-emerald-700',
+    description: 'アセスメント配信・ワークフロー・AIインタビュー評価',
+  },
+  learning: {
+    icon: BookOpen,
+    color: 'bg-sky-500',
+    bgLight: 'bg-sky-50',
+    borderColor: 'border-sky-200',
+    textColor: 'text-sky-700',
     description: '学習管理・受講分析・AIコンテンツ生成・バッジ認定',
   },
   workforce: {
