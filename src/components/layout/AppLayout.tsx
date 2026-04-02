@@ -10,13 +10,13 @@ function usePageTitle() {
   const location = useLocation()
   const segments = location.pathname.split('/').filter(Boolean)
 
-  if (segments.length === 0) return { title: 'Track デモ', breadcrumb: undefined, showBack: false }
+  if (segments.length === 0) return { title: 'Track Demo Showcase', breadcrumb: undefined, showBack: false }
 
   const moduleId = segments[0]
   const sceneId = segments[1]
   const mod = MODULES.find(m => m.id === moduleId)
 
-  if (!mod) return { title: 'Track デモ', breadcrumb: undefined, showBack: false }
+  if (!mod) return { title: 'Track Demo Showcase', breadcrumb: undefined, showBack: false }
 
   if (!sceneId) {
     return { title: mod.label, breadcrumb: undefined, showBack: false }
