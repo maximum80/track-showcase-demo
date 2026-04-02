@@ -53,15 +53,14 @@ export function TopPage() {
     <div className="space-y-8 pb-8">
       {/* Hero text */}
       <div className="bg-gradient-to-r from-[#1A58AF] to-[#1A58AF]/80 rounded-2xl px-8 py-6">
-        <p className="text-blue-200 text-xs font-semibold uppercase tracking-widest mb-1">
-          Skill Intelligence Platform
-        </p>
-        <h1 className="text-white text-2xl font-bold leading-snug mb-2">
-          Track Platform
+        <h1 className="text-white text-xl font-bold leading-snug mb-2">
+          Track Skill Intelligence Platform
         </h1>
-        <p className="text-blue-100 text-sm leading-relaxed">
-          スキルデータを起点に、採用・育成・配置・評価を一気通貫で最適化する
-          AI／デジタル人材向けスキルインテリジェンスプラットフォーム
+        <p className="text-blue-200 text-sm font-medium leading-snug mb-3">
+          経営と現場をスキルデータでつなぐ "スキルOS経営" を実現する「スキルインテリジェンス」
+        </p>
+        <p className="text-blue-100 text-xs leading-relaxed">
+          客観的なスキルデータに基づく人材・組織戦略の意思決定を実現する「スキルインテリジェンス基盤」を構築。従来のタレントマネジメントシステムに格納されている人材データに「スキル評価」という新たなものさしを加え、経営と現場をスキルデータで繋ぎ、意思決定を支援する"スキルOS経営"を実現します。
         </p>
       </div>
 
