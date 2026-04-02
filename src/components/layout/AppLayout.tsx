@@ -1,43 +1,42 @@
 import React, { useState } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet, useLocation, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Sidebar } from './Sidebar'
 import { Header } from './Header'
 import { PanelStackProvider, PanelStackContainer } from './PanelStack'
+import { MODULES, DEMO_SCENES } from '../../demo-data'
 
-const routeTitles: Record<string, { en: string; ja: string; sub?: { en: string; ja: string } }> = {
-  '/dashboard': { en: 'Dashboard', ja: 'ダッシュボード' },
-  '/example': { en: 'Example Page', ja: 'サンプルページ' },
-  '/settings': { en: 'Settings', ja: '設定' },
+function usePageTitle() {
+  const location = useLocation()
+  const segments = location.pathname.split('/').filter(Boolean)
+
+  if (segments.length === 0) return { title: 'Track デモ', breadcrumb: undefined, showBack: false }
+
+  const moduleId = segments[0]
+  const sceneId = segments[1]
+  const mod = MODULES.find(m => m.id === moduleId)
+
+  if (!mod) return { title: 'Track デモ', breadcrumb: undefined, showBack: false }
+
+  if (!sceneId) {
+    return { title: mod.label, breadcrumb: undefined, showBack: false }
+  }
+
+  const scene = DEMO_SCENES.find(s => s.id === sceneId)
+  return {
+    title: scene?.scene ?? sceneId,
+    breadcrumb: [{ label: mod.label, to: `/${moduleId}` }],
+    showBack: true,
+  }
 }
-
-const parentLabels: Record<string, { en: string; ja: string }> = {}
 
 export function AppLayout() {
   const { i18n } = useTranslation()
-  const location = useLocation()
   const [collapsed, setCollapsed] = useState(false)
   const [dark, setDark] = useState(false)
   const [persona, setPersona] = useState('admin')
 
-  const isJa = i18n.language === 'ja'
-
-  const pathKey = Object.keys(routeTitles)
-    .filter(k => location.pathname.startsWith(k))
-    .sort((a, b) => b.length - a.length)[0]
-
-  const titleData = pathKey ? routeTitles[pathKey] : null
-  const title = titleData ? (isJa ? titleData.ja : titleData.en) : 'App'
-
-  const segments = location.pathname.split('/').filter(Boolean)
-  const breadcrumb = segments.length > 1
-    ? (() => {
-        const parentPath = '/' + segments[0]
-        const parent = parentLabels[parentPath]
-        return parent ? [{ label: isJa ? parent.ja : parent.en, to: parentPath }] : []
-      })()
-    : []
-  const showBack = breadcrumb.length > 0
+  const { title, breadcrumb, showBack } = usePageTitle()
 
   return (
     <PanelStackProvider>
@@ -54,7 +53,7 @@ export function AppLayout() {
           <div className="absolute inset-0 flex flex-col">
             <Header
               title={title}
-              breadcrumb={breadcrumb.length > 0 ? breadcrumb : undefined}
+              breadcrumb={breadcrumb}
               showBack={showBack}
             />
             <div className="relative flex-grow overflow-hidden">
@@ -63,7 +62,7 @@ export function AppLayout() {
                   <Outlet context={{ persona, dark }} />
                 </div>
               </div>
-              <PanelStackContainer isJa={isJa} />
+              <PanelStackContainer isJa={i18n.language === 'ja'} />
             </div>
           </div>
         </div>
