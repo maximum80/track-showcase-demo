@@ -52,26 +52,23 @@ export function TopPage() {
   return (
     <div className="space-y-8 pb-8">
       {/* Minimap Hero */}
-      <div className="rounded-2xl overflow-hidden border border-neutral-100 relative">
+      <div className="rounded-2xl overflow-hidden border border-neutral-100">
         <img
           src="/track_minimap.png"
           alt="Track Platform Overview"
-          className="w-full object-cover"
-          style={{ maxHeight: '360px' }}
+          className="w-full object-contain block"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1A58AF]/80 via-[#1A58AF]/40 to-transparent flex items-end">
-          <div className="p-8 max-w-xl">
-            <p className="text-blue-200 text-xs font-semibold uppercase tracking-widest mb-2">
-              Skill Intelligence Platform
-            </p>
-            <h1 className="text-white text-3xl font-bold leading-snug mb-3">
-              Track Platform
-            </h1>
-            <p className="text-blue-100 text-sm leading-relaxed">
-              スキルデータを起点に、採用・育成・配置・評価を一気通貫で最適化する
-              AI／デジタル人材向けスキルインテリジェンスプラットフォーム
-            </p>
-          </div>
+        <div className="bg-gradient-to-r from-[#1A58AF] to-[#1A58AF]/80 px-8 py-6">
+          <p className="text-blue-200 text-xs font-semibold uppercase tracking-widest mb-1">
+            Skill Intelligence Platform
+          </p>
+          <h1 className="text-white text-2xl font-bold leading-snug mb-2">
+            Track Platform
+          </h1>
+          <p className="text-blue-100 text-sm leading-relaxed">
+            スキルデータを起点に、採用・育成・配置・評価を一気通貫で最適化する
+            AI／デジタル人材向けスキルインテリジェンスプラットフォーム
+          </p>
         </div>
       </div>
 
