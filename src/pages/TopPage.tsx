@@ -65,13 +65,11 @@ export function TopPage() {
       </div>
 
       {/* Minimap image */}
-      <div className="rounded-xl overflow-hidden border border-neutral-100">
-        <img
-          src="/track_minimap.png"
-          alt="Track Platform Overview"
-          className="w-full h-auto block max-h-48 object-contain object-top bg-white"
-        />
-      </div>
+      <img
+        src="/track_minimap.png"
+        alt="Track Platform Overview"
+        className="w-full h-auto block max-h-72 object-contain object-top"
+      />
 
       {/* 4 Module Cards */}
       <section>
