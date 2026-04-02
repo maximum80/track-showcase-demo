@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import {
   ChevronDown, ChevronRight,
   PanelLeftClose, PanelLeft,
@@ -30,12 +30,18 @@ const TRACK_LOGO_URL = 'https://res.cloudinary.com/hkldfk58b/image/upload/v16669
 
 export function Sidebar({ collapsed, onToggle }: SidebarProps) {
   const location = useLocation()
+  const navigate = useNavigate()
   const [expandedModules, setExpandedModules] = useState<Record<string, boolean>>({
     platform: true,
   })
 
-  const toggleModule = (id: string) => {
-    setExpandedModules(prev => ({ ...prev, [id]: !prev[id] }))
+  const handleModuleClick = (id: string) => {
+    const alreadyOnModule = location.pathname === `/${id}`
+    setExpandedModules(prev => ({
+      ...prev,
+      [id]: alreadyOnModule ? !prev[id] : true,
+    }))
+    navigate(`/${id}`)
   }
 
   return (
@@ -106,7 +112,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
                 </NavLink>
               ) : (
                 <button
-                  onClick={() => toggleModule(mod.id)}
+                  onClick={() => handleModuleClick(mod.id)}
                   className={cn(
                     'w-full flex items-center gap-3 px-3 py-2 rounded-lg text-body transition-micro',
                     isModuleActive
