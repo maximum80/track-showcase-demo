@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ArrowRight, BarChart2, Briefcase, BookOpen, Users, TrendingUp, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, BarChart2, Briefcase, BookOpen, Users } from 'lucide-react'
 import { MODULES, getScenesByModule } from '../demo-data'
 import type { Module } from '../demo-data'
 
@@ -69,56 +69,9 @@ export function TopPage() {
         <img
           src="/track_minimap.png"
           alt="Track Platform Overview"
-          className="w-full h-auto block"
+          className="w-full h-auto block max-h-48 object-contain object-top bg-white"
         />
       </div>
-
-      {/* Platform pitch content */}
-      <div className="rounded-xl border border-neutral-100 bg-neutral-50 px-6 py-5">
-        <h2 className="text-base font-bold text-neutral-900 leading-snug mb-3">
-          経営と現場をスキルデータでつなぐ "スキルOS経営" を実現する「スキルインテリジェンス」
-        </h2>
-        <p className="text-sm text-neutral-600 leading-relaxed">
-          客観的なスキルデータに基づく人材・組織戦略の意思決定を実現する「スキルインテリジェンス基盤」を構築。従来のタレントマネジメントシステムに格納されている人材データに「スキル評価」という新たなものさしを加え、経営と現場をスキルデータで繋ぎ、意思決定を支援する"スキルOS経営"を実現します。
-        </p>
-      </div>
-
-      <section>
-        <div className="flex items-center gap-2 mb-4">
-          <TrendingUp size={16} className="text-[#1A58AF]" />
-          <h2 className="text-sm font-semibold text-neutral-800 leading-snug">
-            分断された施策・人材の管理から脱却し、スキルデータに基づいて人材・組織戦略の意思決定をする組織へ
-          </h2>
-        </div>
-        <div className="space-y-3">
-          {[
-            {
-              before: '自己申告や静的データに依存した「スキル実態の不透明化」',
-              afterHeading: '客観的なスキルデータを可視化・統合する基盤',
-              afterBody: '従来の静的な人材データの記録・管理に加え、実務ログやアセスメントに基づく客観的なスキルデータを可視化・統合。自己申告による限界を補完し、一貫した人材・組織戦略の意思決定をより強固にする「スキルインテリジェンス基盤」を構築します。',
-            },
-            {
-              before: '採用・育成・配置・評価の分断による「人事施策・システムの分散」',
-              afterHeading: 'データドリブンな意思決定と一貫した施策実行',
-              afterBody: '構築した基盤を軸に、分散しがちな採用・育成・配置のプロセスをシームレスに連動させます。データドリブンなタレント需給予測から最適配置・個別育成までが機能する仕組みを組織に実装し、事業変革に対応する人材ポートフォリオの構築とデジタルケイパビリティの底上げを実現します。',
-            },
-          ].map((p, i) => (
-            <div key={i} className="rounded-xl border border-neutral-100 bg-white overflow-hidden">
-              <div className="px-4 py-3 bg-neutral-50 border-b border-neutral-100 flex items-start gap-2">
-                <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-neutral-200 text-neutral-600 shrink-0 mt-0.5">Before</span>
-                <p className="text-xs text-neutral-600 leading-relaxed">{p.before}</p>
-              </div>
-              <div className="px-4 py-3 flex items-start gap-2">
-                <CheckCircle2 size={14} className="text-[#1A58AF] shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-xs font-semibold text-[#1A58AF] mb-1">{p.afterHeading}</p>
-                  <p className="text-xs text-neutral-600 leading-relaxed">{p.afterBody}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* 4 Module Cards */}
       <section>
