@@ -51,25 +51,27 @@ export function TopPage() {
 
   return (
     <div className="space-y-8 pb-8">
-      {/* Minimap Hero */}
-      <div className="rounded-2xl overflow-hidden border border-neutral-100">
+      {/* Hero text */}
+      <div className="bg-gradient-to-r from-[#1A58AF] to-[#1A58AF]/80 rounded-2xl px-8 py-6">
+        <p className="text-blue-200 text-xs font-semibold uppercase tracking-widest mb-1">
+          Skill Intelligence Platform
+        </p>
+        <h1 className="text-white text-2xl font-bold leading-snug mb-2">
+          Track Platform
+        </h1>
+        <p className="text-blue-100 text-sm leading-relaxed">
+          スキルデータを起点に、採用・育成・配置・評価を一気通貫で最適化する
+          AI／デジタル人材向けスキルインテリジェンスプラットフォーム
+        </p>
+      </div>
+
+      {/* Minimap image */}
+      <div className="rounded-xl overflow-hidden border border-neutral-100">
         <img
           src="/track_minimap.png"
           alt="Track Platform Overview"
-          className="w-full object-contain block"
+          className="w-full h-auto block"
         />
-        <div className="bg-gradient-to-r from-[#1A58AF] to-[#1A58AF]/80 px-8 py-6">
-          <p className="text-blue-200 text-xs font-semibold uppercase tracking-widest mb-1">
-            Skill Intelligence Platform
-          </p>
-          <h1 className="text-white text-2xl font-bold leading-snug mb-2">
-            Track Platform
-          </h1>
-          <p className="text-blue-100 text-sm leading-relaxed">
-            スキルデータを起点に、採用・育成・配置・評価を一気通貫で最適化する
-            AI／デジタル人材向けスキルインテリジェンスプラットフォーム
-          </p>
-        </div>
       </div>
 
       {/* 4 Module Cards */}
