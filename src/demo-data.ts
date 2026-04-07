@@ -53,7 +53,7 @@ export const DEMO_SCENES: DemoScene[] = [
 ]
 
 export function getScenesByModule(module: Module): DemoScene[] {
-  return DEMO_SCENES.filter(s => s.module === module)
+  return DEMO_SCENES.filter(s => s.module === module && s.driveFileId)
 }
 
 export function getSceneById(id: string): DemoScene | undefined {
