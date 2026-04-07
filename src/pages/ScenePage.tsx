@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import {
   Play, Maximize2, AlertCircle, Layers, Target,
-  ChevronLeft, ChevronRight, User, Settings,
+  ChevronLeft, ChevronRight, User, Settings, ExternalLink,
 } from 'lucide-react'
 import { getSceneById, getScenesByModule } from '../demo-data'
 
@@ -61,12 +61,12 @@ const SECTION_STYLES: Record<string, { icon: React.ElementType; iconBg: string; 
   },
 }
 
-function resolveEmbedUrl(url: string): string {
-  const driveMatch = url.match(/\/file\/d\/([^/?]+)/)
-  if (driveMatch) return `https://drive.google.com/file/d/${driveMatch[1]}/preview`
-  const idMatch = url.match(/[?&]id=([^&]+)/)
-  if (idMatch) return `https://drive.google.com/file/d/${idMatch[1]}/preview`
-  return url
+function driveEmbedUrl(fileId: string): string {
+  return `https://drive.google.com/file/d/${fileId}/preview`
+}
+
+function driveOpenUrl(fileId: string): string {
+  return `https://drive.google.com/file/d/${fileId}/view`
 }
 
 export function ScenePage() {
@@ -82,7 +82,8 @@ export function ScenePage() {
   const prevScene = currentIndex > 0 ? scenes[currentIndex - 1] : null
   const nextScene = currentIndex < scenes.length - 1 ? scenes[currentIndex + 1] : null
 
-  const embedUrl = scene.demoUrl ? resolveEmbedUrl(scene.demoUrl) : null
+  const embedUrl = scene.driveFileId ? driveEmbedUrl(scene.driveFileId) : null
+  const openUrl  = scene.driveFileId ? driveOpenUrl(scene.driveFileId)  : null
 
   const docContent = getDoc(scene.id)
   const sections = parseSections(docContent)
@@ -115,12 +116,26 @@ export function ScenePage() {
               allowFullScreen
               title={scene.scene}
             />
-            <button
-              onClick={() => setFullscreen(true)}
-              className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-lg bg-black/40 text-white hover:bg-black/60 transition-colors"
-            >
-              <Maximize2 size={14} />
-            </button>
+            <div className="absolute top-3 right-3 flex gap-2">
+              {openUrl && (
+                <a
+                  href={openUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 flex items-center justify-center rounded-lg bg-black/40 text-white hover:bg-black/60 transition-colors"
+                  title="別タブで開く"
+                >
+                  <ExternalLink size={14} />
+                </a>
+              )}
+              <button
+                onClick={() => setFullscreen(true)}
+                className="w-8 h-8 flex items-center justify-center rounded-lg bg-black/40 text-white hover:bg-black/60 transition-colors"
+                title="全画面"
+              >
+                <Maximize2 size={14} />
+              </button>
+            </div>
           </>
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center gap-4">
