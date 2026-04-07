@@ -33,6 +33,8 @@ export const DEMO_SCENES: DemoScene[] = [
   { id: 'recruiting-02', no: 11, module: 'recruiting', moduleLabel: 'Recruiting', perspective: '管理者', scene: 'ワークフロー構築',                                    driveFileId: '1TP3a3DU8WsOLl5KTnAVm6MGcg28v0PYi' },
   { id: 'recruiting-03', no: 12, module: 'recruiting', moduleLabel: 'Recruiting', perspective: '管理者', scene: '受講者レポート',                                      driveFileId: '1K-UKxi4i-SjNkxoYxAN9Y8lT_1mLmBdg' },
   { id: 'recruiting-04', no: 13, module: 'recruiting', moduleLabel: 'Recruiting', perspective: 'ユーザー', scene: 'AIインタビュー（マインド分析）',                     driveFileId: '1NcBiPCqwB8yv1AvbIDA_xK_gP-YytVvR' },
+  { id: 'recruiting-05', no: 27, module: 'recruiting', moduleLabel: 'Recruiting', perspective: 'ユーザー', scene: 'AI・デジタル活用状況ヒアリング',                       driveFileId: '1F_l0UqZWlU-Vq_IXO1PbZblFCXMFiBJb' },
+  { id: 'recruiting-06', no: 28, module: 'recruiting', moduleLabel: 'Recruiting', perspective: 'ユーザー', scene: '新卒採用面接',                                        driveFileId: '1XTnbEDd8Jt2WliXUXvJyQVw6z6gjQZIy' },
   // ─── Learning ──────────────────────────────────────────────────────────────
   { id: 'learning-01', no: 14, module: 'learning', moduleLabel: 'Learning', perspective: '管理者', scene: '受講状況ダッシュボード→Hubユーザ確認',                      driveFileId: '15TqV8cHZo9Z8gy1jYgjCdL2bpck4UMrm' },
   { id: 'learning-02', no: 15, module: 'learning', moduleLabel: 'Learning', perspective: '管理者', scene: '講座・受講分析（MAU・コホート等）',                          driveFileId: '15TqV8cHZo9Z8gy1jYgjCdL2bpck4UMrm' },
