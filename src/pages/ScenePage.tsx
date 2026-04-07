@@ -61,12 +61,12 @@ const SECTION_STYLES: Record<string, { icon: React.ElementType; iconBg: string; 
   },
 }
 
-function extractDriveFileId(url: string): string | null {
-  const m = url.match(/\/file\/d\/([^/]+)/)
-  if (m) return m[1]
-  const m2 = url.match(/[?&]id=([^&]+)/)
-  if (m2) return m2[1]
-  return null
+function resolveEmbedUrl(url: string): string {
+  const driveMatch = url.match(/\/file\/d\/([^/?]+)/)
+  if (driveMatch) return `https://drive.google.com/file/d/${driveMatch[1]}/preview`
+  const idMatch = url.match(/[?&]id=([^&]+)/)
+  if (idMatch) return `https://drive.google.com/file/d/${idMatch[1]}/preview`
+  return url
 }
 
 export function ScenePage() {
@@ -82,8 +82,7 @@ export function ScenePage() {
   const prevScene = currentIndex > 0 ? scenes[currentIndex - 1] : null
   const nextScene = currentIndex < scenes.length - 1 ? scenes[currentIndex + 1] : null
 
-  const driveFileId = scene.driveUrl ? extractDriveFileId(scene.driveUrl) : null
-  const embedUrl = driveFileId ? `https://drive.google.com/file/d/${driveFileId}/preview` : null
+  const embedUrl = scene.demoUrl ? resolveEmbedUrl(scene.demoUrl) : null
 
   const docContent = getDoc(scene.id)
   const sections = parseSections(docContent)
