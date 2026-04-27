@@ -85,7 +85,7 @@ export function ScenePage() {
   const t = useT()
 
   const scene = getSceneById(sceneId ?? '')
-  if (!scene) return <div className="text-neutral-400">シーンが見つかりません</div>
+  if (!scene) return <div className="text-neutral-400">{t('シーンが見つかりません', 'Scene not found')}</div>
 
   const scenes = module ? getScenesByModule(scene.module) : []
   const currentIndex = scenes.findIndex(s => s.id === sceneId)

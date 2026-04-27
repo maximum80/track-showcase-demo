@@ -143,7 +143,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
                           : 'text-neutral-600 hover:text-primary hover:bg-neutral-50',
                       )}
                     >
-                      <span className="truncate leading-snug">{scene.scene}</span>
+                      <span className="truncate leading-snug">{t(scene.scene, scene.sceneEn ?? scene.scene)}</span>
                     </NavLink>
                   ))}
                 </div>

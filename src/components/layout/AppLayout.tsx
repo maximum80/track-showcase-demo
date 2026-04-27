@@ -8,7 +8,7 @@ import { MODULES, DEMO_SCENES } from '../../demo-data'
 import { LangContext } from '../../lang-context'
 import type { Lang } from '../../lang-context'
 
-function usePageTitle() {
+function usePageTitle(lang: Lang) {
   const location = useLocation()
   const segments = location.pathname.split('/').filter(Boolean)
 
@@ -25,8 +25,11 @@ function usePageTitle() {
   }
 
   const scene = DEMO_SCENES.find(s => s.id === sceneId)
+  const sceneTitle = scene
+    ? (lang === 'en' ? (scene.sceneEn ?? scene.scene) : scene.scene)
+    : sceneId
   return {
-    title: scene?.scene ?? sceneId,
+    title: sceneTitle,
     breadcrumb: [{ label: mod.label, to: `/${moduleId}` }],
     showBack: true,
   }
@@ -37,20 +40,20 @@ export function AppLayout() {
   const [collapsed, setCollapsed] = useState(false)
   const [dark, setDark] = useState(false)
   const [persona, setPersona] = useState('admin')
-  const [lang, setLang] = useState<Lang>('ja')
+  const [lang, setLang] = useState<Lang>(() => (localStorage.getItem('givery-language') as Lang) || 'ja')
 
-  const { title, breadcrumb, showBack } = usePageTitle()
+  const { title, breadcrumb, showBack } = usePageTitle(lang)
 
   const langToggle = (
     <div className="flex items-center rounded-lg border border-neutral-200 overflow-hidden text-xs font-medium">
       <button
-        onClick={() => setLang('ja')}
+        onClick={() => { setLang('ja'); localStorage.setItem('givery-language', 'ja') }}
         className={`px-3 py-1.5 transition-colors ${lang === 'ja' ? 'bg-[#1A58AF] text-white' : 'bg-white text-neutral-500 hover:bg-neutral-50'}`}
       >
         JA
       </button>
       <button
-        onClick={() => setLang('en')}
+        onClick={() => { setLang('en'); localStorage.setItem('givery-language', 'en') }}
         className={`px-3 py-1.5 transition-colors ${lang === 'en' ? 'bg-[#1A58AF] text-white' : 'bg-white text-neutral-500 hover:bg-neutral-50'}`}
       >
         EN

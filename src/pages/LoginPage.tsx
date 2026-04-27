@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import type { Lang } from '../lang-context'
 
 const TRACK_LOGO_URL = 'https://res.cloudinary.com/hkldfk58b/image/upload/v1666933718/sx1vjp0836o280ivvwgi.png'
 const CORRECT_ID = 'track'
@@ -8,10 +9,17 @@ interface LoginPageProps {
   onAuth: () => void
 }
 
+function getStoredLang(): Lang {
+  return (localStorage.getItem('givery-language') as Lang) || 'ja'
+}
+
 export function LoginPage({ onAuth }: LoginPageProps) {
   const [id, setId] = useState('')
   const [pass, setPass] = useState('')
   const [error, setError] = useState(false)
+  const [lang, setLang] = useState<Lang>(getStoredLang)
+
+  const isEn = lang === 'en'
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -23,6 +31,11 @@ export function LoginPage({ onAuth }: LoginPageProps) {
     }
   }
 
+  const handleLangChange = (l: Lang) => {
+    setLang(l)
+    localStorage.setItem('givery-language', l)
+  }
+
   return (
     <div className="min-h-screen bg-neutral-50 flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
@@ -30,8 +43,26 @@ export function LoginPage({ onAuth }: LoginPageProps) {
           <img src={TRACK_LOGO_URL} alt="Track" className="h-8 object-contain" />
         </div>
         <div className="bg-white rounded-2xl border border-neutral-100 shadow-sm p-8">
+          <div className="flex justify-end mb-4">
+            <div className="flex items-center rounded-lg border border-neutral-200 overflow-hidden text-xs font-medium">
+              <button
+                onClick={() => handleLangChange('ja')}
+                className={`px-3 py-1.5 transition-colors ${lang === 'ja' ? 'bg-[#1A58AF] text-white' : 'bg-white text-neutral-500 hover:bg-neutral-50'}`}
+              >
+                JA
+              </button>
+              <button
+                onClick={() => handleLangChange('en')}
+                className={`px-3 py-1.5 transition-colors ${lang === 'en' ? 'bg-[#1A58AF] text-white' : 'bg-white text-neutral-500 hover:bg-neutral-50'}`}
+              >
+                EN
+              </button>
+            </div>
+          </div>
           <h1 className="text-lg font-semibold text-neutral-900 mb-1 text-center">Demo Showcase</h1>
-          <p className="text-sm text-neutral-500 text-center mb-6">アクセスするには認証が必要です</p>
+          <p className="text-sm text-neutral-500 text-center mb-6">
+            {isEn ? 'Authentication required to access' : 'アクセスするには認証が必要です'}
+          </p>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-xs font-medium text-neutral-600 mb-1">ID</label>
@@ -44,7 +75,9 @@ export function LoginPage({ onAuth }: LoginPageProps) {
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-neutral-600 mb-1">パスワード</label>
+              <label className="block text-xs font-medium text-neutral-600 mb-1">
+                {isEn ? 'Password' : 'パスワード'}
+              </label>
               <input
                 type="password"
                 value={pass}
@@ -53,13 +86,15 @@ export function LoginPage({ onAuth }: LoginPageProps) {
               />
             </div>
             {error && (
-              <p className="text-xs text-red-500">IDまたはパスワードが正しくありません</p>
+              <p className="text-xs text-red-500">
+                {isEn ? 'Invalid ID or password' : 'IDまたはパスワードが正しくありません'}
+              </p>
             )}
             <button
               type="submit"
               className="w-full py-2.5 bg-[#1A58AF] text-white rounded-lg text-sm font-medium hover:bg-[#1648a0] transition-colors"
             >
-              ログイン
+              {isEn ? 'Login' : 'ログイン'}
             </button>
           </form>
         </div>
