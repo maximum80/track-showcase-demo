@@ -7,7 +7,8 @@ export interface DemoScene {
   moduleLabel: string
   scene: string
   perspective: '管理者' | 'ユーザー'
-  driveFileId?: string  // Google Drive video file ID (column N)
+  driveFileId?: string    // Google Drive video file ID - Japanese (column N)
+  driveFileIdEn?: string  // Google Drive video file ID - English  (column P)
 }
 
 export const MODULES: { id: Module; label: string; shortLabel: string }[] = [
@@ -29,8 +30,8 @@ export const DEMO_SCENES: DemoScene[] = [
   { id: 'platform-08', no: 8,  module: 'platform', moduleLabel: 'Skill Platform', perspective: 'ユーザー', scene: '新スキル調査UI',                                    driveFileId: '1vfxPHw7stgCHueM9005dO3rbyYSxKSkE' },
   { id: 'platform-09', no: 9,  module: 'platform', moduleLabel: 'Skill Platform', perspective: 'ユーザー', scene: 'スキルギャップ分析・ラーニングパス生成' },
   // ─── Recruiting ────────────────────────────────────────────────────────────
-  { id: 'recruiting-01', no: 10, module: 'recruiting', moduleLabel: 'Recruiting', perspective: '管理者', scene: '配信設定（対象者・スケジュール）' },
-  { id: 'recruiting-02', no: 11, module: 'recruiting', moduleLabel: 'Recruiting', perspective: '管理者', scene: 'ワークフロー構築',                                    driveFileId: '1TP3a3DU8WsOLl5KTnAVm6MGcg28v0PYi' },
+  { id: 'recruiting-01', no: 10, module: 'recruiting', moduleLabel: 'Recruiting', perspective: '管理者', scene: '配信設定（対象者・スケジュール）',                                      driveFileIdEn: '1IR3cNuosu1C7rBpdtVYONEaU-rz4KNnT' },
+  { id: 'recruiting-02', no: 11, module: 'recruiting', moduleLabel: 'Recruiting', perspective: '管理者', scene: 'ワークフロー構築',                                    driveFileId: '1TP3a3DU8WsOLl5KTnAVm6MGcg28v0PYi', driveFileIdEn: '1HIgSsga285DK_KAt1qk_4A2eAYDE_ox6' },
   { id: 'recruiting-03', no: 12, module: 'recruiting', moduleLabel: 'Recruiting', perspective: '管理者', scene: '受講者レポート',                                      driveFileId: '1K-UKxi4i-SjNkxoYxAN9Y8lT_1mLmBdg' },
   { id: 'recruiting-04', no: 13, module: 'recruiting', moduleLabel: 'Recruiting', perspective: 'ユーザー', scene: 'AIインタビュー（マインド分析）',                     driveFileId: '1NcBiPCqwB8yv1AvbIDA_xK_gP-YytVvR' },
   { id: 'recruiting-05', no: 27, module: 'recruiting', moduleLabel: 'Recruiting', perspective: 'ユーザー', scene: 'AI・デジタル活用状況ヒアリング',                       driveFileId: '1F_l0UqZWlU-Vq_IXO1PbZblFCXMFiBJb' },

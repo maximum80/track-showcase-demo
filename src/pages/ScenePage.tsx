@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, useOutletContext } from 'react-router-dom'
 import {
   Play, Maximize2, AlertCircle, Layers, Target,
   ChevronLeft, ChevronRight, User, Settings, ExternalLink,
@@ -73,6 +73,7 @@ export function ScenePage() {
   const { module, sceneId } = useParams<{ module: string; sceneId: string }>()
   const navigate = useNavigate()
   const [fullscreen, setFullscreen] = useState(false)
+  const { lang } = useOutletContext<{ lang: 'ja' | 'en' }>()
 
   const scene = getSceneById(sceneId ?? '')
   if (!scene) return <div className="text-neutral-400">シーンが見つかりません</div>
@@ -82,16 +83,19 @@ export function ScenePage() {
   const prevScene = currentIndex > 0 ? scenes[currentIndex - 1] : null
   const nextScene = currentIndex < scenes.length - 1 ? scenes[currentIndex + 1] : null
 
-  const embedUrl = scene.driveFileId ? driveEmbedUrl(scene.driveFileId) : null
-  const openUrl  = scene.driveFileId ? driveOpenUrl(scene.driveFileId)  : null
+  // English video if available; fall back to Japanese
+  const activeFileId = (lang === 'en' && scene.driveFileIdEn) ? scene.driveFileIdEn : scene.driveFileId
+  const hasEnVideo = Boolean(scene.driveFileIdEn)
+  const embedUrl = activeFileId ? driveEmbedUrl(activeFileId) : null
+  const openUrl  = activeFileId ? driveOpenUrl(activeFileId)  : null
 
   const docContent = getDoc(scene.id)
   const sections = parseSections(docContent)
 
   return (
     <div className="space-y-6 pb-8">
-      {/* Perspective badge */}
-      <div className="flex items-center gap-2">
+      {/* Perspective badge + EN unavailable notice */}
+      <div className="flex items-center gap-2 flex-wrap">
         <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-caption font-medium border ${
           scene.perspective === '管理者'
             ? 'bg-primary-50 text-primary border-primary-100'
@@ -100,6 +104,11 @@ export function ScenePage() {
           {scene.perspective === '管理者' ? <Settings size={12} /> : <User size={12} />}
           {scene.perspective}視点
         </span>
+        {lang === 'en' && !hasEnVideo && (
+          <span className="inline-flex items-center px-2.5 py-1 rounded-full text-caption font-medium border border-amber-200 bg-amber-50 text-amber-700">
+            EN video coming soon — showing JA
+          </span>
+        )}
       </div>
 
       {/* Video area */}

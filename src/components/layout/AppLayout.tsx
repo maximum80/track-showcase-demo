@@ -35,8 +35,26 @@ export function AppLayout() {
   const [collapsed, setCollapsed] = useState(false)
   const [dark, setDark] = useState(false)
   const [persona, setPersona] = useState('admin')
+  const [lang, setLang] = useState<'ja' | 'en'>('ja')
 
   const { title, breadcrumb, showBack } = usePageTitle()
+
+  const langToggle = (
+    <div className="flex items-center rounded-lg border border-neutral-200 overflow-hidden text-xs font-medium">
+      <button
+        onClick={() => setLang('ja')}
+        className={`px-3 py-1.5 transition-colors ${lang === 'ja' ? 'bg-[#1A58AF] text-white' : 'bg-white text-neutral-500 hover:bg-neutral-50'}`}
+      >
+        JA
+      </button>
+      <button
+        onClick={() => setLang('en')}
+        className={`px-3 py-1.5 transition-colors ${lang === 'en' ? 'bg-[#1A58AF] text-white' : 'bg-white text-neutral-500 hover:bg-neutral-50'}`}
+      >
+        EN
+      </button>
+    </div>
+  )
 
   return (
     <PanelStackProvider>
@@ -55,11 +73,12 @@ export function AppLayout() {
               title={title}
               breadcrumb={breadcrumb}
               showBack={showBack}
+              actions={langToggle}
             />
             <div className="relative flex-grow overflow-hidden">
               <div className="absolute inset-0 overflow-y-auto">
                 <div className="flex flex-col flex-grow gap-6 px-6 py-4">
-                  <Outlet context={{ persona, dark }} />
+                  <Outlet context={{ persona, dark, lang }} />
                 </div>
               </div>
               <PanelStackContainer isJa={i18n.language === 'ja'} />
