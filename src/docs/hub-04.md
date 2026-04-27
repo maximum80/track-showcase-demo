@@ -9,3 +9,17 @@
 ## 提供する価値
 
 経営・HRが「どこに誰が足りないか」を即判断。データに基づいた組織設計・採用計画の立案が実現する。
+
+<!-- EN -->
+
+## Challenge
+
+Assessments were conducted but results aren't being leveraged for management decisions. Numbers are available but don't lead to "what initiative to pursue next."
+
+## Solution Overview
+
+Automatically generate reports with department-level skill fulfillment rates and trend analysis from assessment results. Compare across multiple dimensions: company average, industry average, years of service, and more. Automate training gap visualization.
+
+## Value Delivered
+
+Make development investment decisions based on data, not intuition. Instantly generate evidence needed for human capital management and use it for executive reporting and talent disclosure.

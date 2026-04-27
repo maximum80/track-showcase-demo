@@ -9,3 +9,17 @@
 ## 提供する価値
 
 PMOの工数を削減しながらプロジェクトの健全性を維持。収益性とリスクを早期に把握し、問題が深刻化する前に対処できる。
+
+<!-- EN -->
+
+## Challenge
+
+Project utilization, contract information, and financials are managed in separate systems, creating heavy PMO aggregation and reporting effort. Problem detection is delayed, with issues addressed only after risks materialize.
+
+## Solution Overview
+
+Integrated management of utilization, contracts, and financials on a single screen. Real-time visualization of project health (utilization rate, profitability, risk). Early detection through alerts.
+
+## Value Delivered
+
+Reduce PMO effort while maintaining project health. Identify profitability and risks early, addressing issues before they escalate.

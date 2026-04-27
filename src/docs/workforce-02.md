@@ -9,3 +9,17 @@
 ## 提供する価値
 
 プリセールスの情報整理コストを軽減。案件情報の標準化により要員計画・提案精度が向上し、受注率の改善に繋がる。
+
+<!-- EN -->
+
+## Challenge
+
+Deal information from sales arrives as unstructured data. Pre-sales staff spend time organizing information instead of focusing on proposal activities.
+
+## Solution Overview
+
+AI summarizes and structures deal information. Visualize project overview, required skills, scale, and timeline on a dashboard. Compare with similar past deals.
+
+## Value Delivered
+
+Reduce pre-sales information organization costs. Standardized deal information improves workforce planning and proposal accuracy, leading to higher win rates.

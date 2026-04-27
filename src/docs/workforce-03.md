@@ -9,3 +9,17 @@ AIエージェントがスキル・稼働状況・案件要件を自動分析し
 ## 提供する価値
 
 「職種」情報のみの粗い要員計画から、必要な「業務」「スキル」から逆算した精度の高い要員計画を実現。アサインミスマッチを削減し、プロジェクト成功率と従業員満足度を向上させる。
+
+<!-- EN -->
+
+## Challenge
+
+Workforce planning is done at a coarse "job type" granularity, causing frequent skill-to-talent mismatches. Simultaneously considering availability, skills, and project fit is ad hoc and limited.
+
+## Solution Overview
+
+AI agent automatically analyzes skills, availability, and project requirements to propose optimal assignment candidates. Auto-generates high-accuracy workforce plans factoring in skill fit, availability rate, and past similar project track records.
+
+## Value Delivered
+
+Move from coarse "job type" workforce planning to precise planning based on required "tasks" and "skills." Reduce assignment mismatches and improve project success rates and employee satisfaction.

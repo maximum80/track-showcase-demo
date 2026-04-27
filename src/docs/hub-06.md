@@ -9,3 +9,17 @@
 ## 提供する価値
 
 適材を探す時間をゼロに。社内タレントを完全に可視化し、最適な人材配置・プロジェクトアサインを実現する。
+
+<!-- EN -->
+
+## Challenge
+
+Can't grasp at a glance "what skills this person has" or "whether they're growing." Resumes, evaluation sheets, and training records are scattered with no unified view.
+
+## Solution Overview
+
+Integrate skill timeline, skill gaps, work history, certifications, and learning history on a single screen. View as a personal "skill passport" with chronological tracking from work experience to learning.
+
+## Value Delivered
+
+Understand "who someone is" at a glance. Dramatically improve the quality of interview preparation, placement consideration, and transfer decisions. Skill growth trajectories visualization enhances evaluation fairness and satisfaction.

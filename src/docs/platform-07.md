@@ -9,3 +9,17 @@
 ## 提供する価値
 
 育成投資の優先順位を組織として統制。個人の成長意欲と組織の方向性を一致させ、育成効果を最大化する。
+
+<!-- EN -->
+
+## Challenge
+
+Can't verify whether individual learning plans align with organizational strategy. Development investment is left to individuals with no organizational governance.
+
+## Solution Overview
+
+Workflow for managers to review and approve learning paths created by users. Confirm organizational development priorities and request feedback or modifications as needed.
+
+## Value Delivered
+
+Govern development investment priorities as an organization. Align individual growth motivation with organizational direction to maximize development effectiveness.

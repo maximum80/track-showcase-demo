@@ -9,3 +9,17 @@
 ## 提供する価値
 
 適材を探す時間をゼロに。社内タレントを完全に可視化し、最適な人材配置・プロジェクトアサインを実現する。
+
+<!-- EN -->
+
+## Challenge
+
+Finding "who in the company has the skills needed for this project" takes too much time. Talent searches rely on personal memory, risking overlooking excellent candidates.
+
+## Solution Overview
+
+Cross-filter search by skill, role, and proficiency level. Drill down from skill graphs to department filtering to individual profile pages. Search with availability status factored in.
+
+## Value Delivered
+
+Reduce talent search time to zero. Fully visualize internal talent and achieve optimal staffing and project assignments.

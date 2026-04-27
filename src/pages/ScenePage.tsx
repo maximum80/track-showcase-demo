@@ -10,8 +10,11 @@ import { useT } from '../lang-context'
 // Load all markdown docs at build time
 const docs = import.meta.glob('../docs/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
 
-function getDoc(sceneId: string): string {
-  return docs[`../docs/${sceneId}.md`] ?? ''
+function getDoc(sceneId: string, lang: 'ja' | 'en'): string {
+  const raw = docs[`../docs/${sceneId}.md`] ?? ''
+  const parts = raw.split(/<!--\s*EN\s*-->/)
+  if (lang === 'en' && parts.length >= 2) return parts[1].trim()
+  return parts[0].trim()
 }
 
 interface Section {
@@ -50,22 +53,30 @@ function renderBody(text: string): React.ReactNode {
 const SECTION_STYLES: Record<string, {
   icon: React.ElementType; iconBg: string; iconColor: string
   cardBorder: string; cardBg: string; headingColor: string
-  labelEn: string
 }> = {
   '課題訴求': {
     icon: AlertCircle, iconBg: 'bg-negative-50', iconColor: 'text-negative',
     cardBorder: 'border-neutral-200', cardBg: 'bg-white', headingColor: 'text-neutral-800',
-    labelEn: 'Challenge',
+  },
+  'Challenge': {
+    icon: AlertCircle, iconBg: 'bg-negative-50', iconColor: 'text-negative',
+    cardBorder: 'border-neutral-200', cardBg: 'bg-white', headingColor: 'text-neutral-800',
   },
   'ソリューション概要': {
     icon: Layers, iconBg: 'bg-primary-50', iconColor: 'text-primary',
     cardBorder: 'border-neutral-200', cardBg: 'bg-white', headingColor: 'text-neutral-800',
-    labelEn: 'Solution Overview',
+  },
+  'Solution Overview': {
+    icon: Layers, iconBg: 'bg-primary-50', iconColor: 'text-primary',
+    cardBorder: 'border-neutral-200', cardBg: 'bg-white', headingColor: 'text-neutral-800',
   },
   '提供する価値': {
     icon: Target, iconBg: 'bg-primary', iconColor: 'text-white',
     cardBorder: 'border-primary-200', cardBg: 'bg-primary-50', headingColor: 'text-primary-800',
-    labelEn: 'Value Delivered',
+  },
+  'Value Delivered': {
+    icon: Target, iconBg: 'bg-primary', iconColor: 'text-white',
+    cardBorder: 'border-primary-200', cardBg: 'bg-primary-50', headingColor: 'text-primary-800',
   },
 }
 
@@ -98,7 +109,7 @@ export function ScenePage() {
   const embedUrl = activeFileId ? driveEmbedUrl(activeFileId) : null
   const openUrl  = activeFileId ? driveOpenUrl(activeFileId)  : null
 
-  const docContent = getDoc(scene.id)
+  const docContent = getDoc(scene.id, lang)
   const sections = parseSections(docContent)
 
   return (
@@ -197,13 +208,13 @@ export function ScenePage() {
             return (
               <div key={heading} className={`rounded-xl border ${style.cardBorder} ${style.cardBg} overflow-hidden`}>
                 <div className={`flex items-center gap-2.5 px-5 py-3.5 border-b ${
-                  heading === '提供する価値' ? 'border-primary-100' : 'border-neutral-100 bg-neutral-50'
+                  heading === '提供する価値' || heading === 'Value Delivered' ? 'border-primary-100' : 'border-neutral-100 bg-neutral-50'
                 }`}>
                   <div className={`w-6 h-6 rounded-md flex items-center justify-center shrink-0 ${style.iconBg}`}>
                     <Icon size={13} className={style.iconColor} />
                   </div>
                   <span className={`text-body font-semibold ${style.headingColor}`}>
-                    {t(heading, style.labelEn)}
+                    {heading}
                   </span>
                 </div>
                 <div className="px-5 py-4 space-y-2">

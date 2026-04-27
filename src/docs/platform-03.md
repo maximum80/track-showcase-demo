@@ -9,3 +9,17 @@
 ## 提供する価値
 
 経営・HRが「どこに誰が足りないか」を即判断。データに基づいた組織設計・採用計画の立案が実現する。
+
+<!-- EN -->
+
+## Challenge
+
+Want to understand organization-wide skill status, but management is fragmented across departments and job types with no overall picture. No data to support discussions on talent investment priorities in executive meetings.
+
+## Solution Overview
+
+Visualize organizational skill status on a single screen with a department × skill matrix. Heatmap colors instantly identify deficit and surplus areas. View proficiency-level headcount distribution.
+
+## Value Delivered
+
+Management and HR can instantly determine "where and who is needed." Enable data-driven organizational design and recruitment planning.

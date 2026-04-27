@@ -9,3 +9,17 @@
 ## 提供する価値
 
 学ぶことがそのままスキルの証明になる。意欲的な学習が直接キャリアデータとして蓄積され、従業員の学習モチベーション向上と組織のスキルデータの鮮度維持を同時に実現する。
+
+<!-- EN -->
+
+## Challenge
+
+No evidence of "skill acquisition" remains in the system after learning completion. Learning and skill data aren't linked, so effort in learning isn't reflected in evaluations or placements.
+
+## Solution Overview
+
+Learning path completion automatically reflects in real-time on Hub's skill timeline. Skill data updates when completion criteria are met.
+
+## Value Delivered
+
+Learning directly becomes proof of skills. Motivated learning accumulates directly as career data, simultaneously improving employee learning motivation and maintaining organizational skill data freshness.

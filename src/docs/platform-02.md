@@ -9,3 +9,17 @@ AIと対話しながら自社独自のロールを生成。既存タクソノミ
 ## 提供する価値
 
 専門コンサルタント不要でタクソノミー設計の工数を大幅削減。自社固有の職務・スキルを定義し、完全にオーダーメイドのスキル戦略を構築できる。
+
+<!-- EN -->
+
+## Challenge
+
+Market-standard taxonomies exist, but you can't define custom roles tailored to your organization. Hiring specialized consultants is too costly and time-consuming.
+
+## Solution Overview
+
+Generate custom roles through AI-guided conversation. Input your business operations and organizational structure based on the existing taxonomy, and AI proposes role definitions. Custom roles can be used for skill management and analysis just like standard roles.
+
+## Value Delivered
+
+Drastically reduce taxonomy design effort without specialized consultants. Define organization-specific jobs and skills to build a fully customized skill strategy.

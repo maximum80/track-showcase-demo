@@ -9,3 +9,17 @@
 ## 提供する価値
 
 自分のキャリアの客観的な出発点が分かる。「自分ごと」として取り組める設計で、高回答率のスキル調査を実現する。
+
+<!-- EN -->
+
+## Challenge
+
+Many employees say "I don't know what to learn." Self-directed learning isn't promoted, and training remains one-size-fits-all.
+
+## Solution Overview
+
+End-to-end flow: select target role → visualize skill gaps → get optimal course recommendations → save learning path. AI analyzes individual skill gaps and presents the shortest learning plan.
+
+## Value Delivered
+
+"What to learn" is automatically shown. Personalized learning paths improve learning retention rates and promote proactive employee growth.

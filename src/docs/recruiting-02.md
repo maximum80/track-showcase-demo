@@ -9,3 +9,17 @@
 ## 提供する価値
 
 測りたいスキルを体系的に多角評価できる。アセスメントプロセスが自動化され、継続的なスキル測定サイクルを確立できる。
+
+<!-- EN -->
+
+## Challenge
+
+Skill assessments tend to be one-off. Want to measure holistically across knowledge, practical skills, and mindset, but combining multiple tools is difficult.
+
+## Solution Overview
+
+Design and distribute workflows combining various assessments: tests, AI interviews, skill surveys, and more. Multi-stage evaluation is also supported.
+
+## Value Delivered
+
+Systematically evaluate target skills from multiple angles. Automate the assessment process and establish continuous skill measurement cycles.

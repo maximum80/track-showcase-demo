@@ -87,7 +87,7 @@ export function AppLayout() {
                   <Outlet context={{ persona, dark, lang }} />
                 </div>
               </div>
-              <PanelStackContainer isJa={i18n.language === 'ja'} />
+              <PanelStackContainer isJa={lang === 'ja'} />
             </div>
           </div>
         </div>

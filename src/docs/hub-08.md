@@ -9,3 +9,17 @@
 ## 提供する価値
 
 育成投資の優先順位を組織として統制。個人の成長意欲と組織の方向性を一致させ、育成効果を最大化する。
+
+<!-- EN -->
+
+## Challenge
+
+Employees hesitate when starting skill surveys, unsure "what to input." High input burden leads to low response rates.
+
+## Solution Overview
+
+Enter your career history and AI suggests recommended roles, then self-assess at the task level tied to those roles. Behavior-based 4-level evaluation minimizes psychological burden.
+
+## Value Delivered
+
+Discover an objective starting point for your career. Design that makes it "personal" achieves high response rates in skill surveys.

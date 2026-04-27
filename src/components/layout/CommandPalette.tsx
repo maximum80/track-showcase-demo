@@ -5,6 +5,7 @@ import {
   Search, LayoutDashboard, FileText, Settings, ArrowRight,
 } from 'lucide-react'
 import { cn } from '../ui'
+import { useLang } from '../../lang-context'
 
 interface CommandPaletteProps {
   open: boolean
@@ -21,13 +22,14 @@ interface CommandItem {
 }
 
 export function CommandPalette({ open, onClose }: CommandPaletteProps) {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const navigate = useNavigate()
+  const lang = useLang()
   const [query, setQuery] = useState('')
   const [selectedIdx, setSelectedIdx] = useState(0)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const isJa = i18n.language === 'ja'
+  const isJa = lang === 'ja'
 
   const commands: CommandItem[] = [
     { id: 'nav-dash', label: 'Go to Dashboard', labelJa: 'ダッシュボードへ', icon: LayoutDashboard, category: 'Navigation', action: () => navigate('/dashboard') },
