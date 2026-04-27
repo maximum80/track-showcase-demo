@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { useT } from '../../lang-context'
 import {
   ChevronDown, ChevronRight,
   PanelLeftClose, PanelLeft,
@@ -31,6 +32,7 @@ const TRACK_LOGO_URL = 'https://res.cloudinary.com/hkldfk58b/image/upload/v16669
 export function Sidebar({ collapsed, onToggle }: SidebarProps) {
   const location = useLocation()
   const navigate = useNavigate()
+  const t = useT()
   const [expandedModules, setExpandedModules] = useState<Record<string, boolean>>({
     platform: true,
   })
@@ -86,7 +88,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
           )}
         >
           <Home size={18} className="shrink-0" />
-          {!collapsed && <span className="truncate">プラットフォーム概要</span>}
+          {!collapsed && <span className="truncate">{t('プラットフォーム概要', 'Platform Overview')}</span>}
         </NavLink>
 
         {MODULES.map(mod => {

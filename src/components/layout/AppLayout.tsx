@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { Outlet, useLocation, useParams } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Sidebar } from './Sidebar'
 import { Header } from './Header'
 import { PanelStackProvider, PanelStackContainer } from './PanelStack'
 import { MODULES, DEMO_SCENES } from '../../demo-data'
+import { LangContext } from '../../lang-context'
+import type { Lang } from '../../lang-context'
 
 function usePageTitle() {
   const location = useLocation()
@@ -35,7 +37,7 @@ export function AppLayout() {
   const [collapsed, setCollapsed] = useState(false)
   const [dark, setDark] = useState(false)
   const [persona, setPersona] = useState('admin')
-  const [lang, setLang] = useState<'ja' | 'en'>('ja')
+  const [lang, setLang] = useState<Lang>('ja')
 
   const { title, breadcrumb, showBack } = usePageTitle()
 
@@ -57,6 +59,7 @@ export function AppLayout() {
   )
 
   return (
+    <LangContext.Provider value={lang}>
     <PanelStackProvider>
       <div className={`min-h-screen w-full flex ${dark ? 'dark' : ''}`}>
         <Sidebar
@@ -87,5 +90,6 @@ export function AppLayout() {
         </div>
       </div>
     </PanelStackProvider>
+    </LangContext.Provider>
   )
 }

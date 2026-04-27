@@ -5,6 +5,7 @@ import {
   ChevronLeft, ChevronRight, User, Settings, ExternalLink,
 } from 'lucide-react'
 import { getSceneById, getScenesByModule } from '../demo-data'
+import { useT } from '../lang-context'
 
 // Load all markdown docs at build time
 const docs = import.meta.glob('../docs/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
@@ -46,18 +47,25 @@ function renderBody(text: string): React.ReactNode {
   })
 }
 
-const SECTION_STYLES: Record<string, { icon: React.ElementType; iconBg: string; iconColor: string; cardBorder: string; cardBg: string; headingColor: string }> = {
+const SECTION_STYLES: Record<string, {
+  icon: React.ElementType; iconBg: string; iconColor: string
+  cardBorder: string; cardBg: string; headingColor: string
+  labelEn: string
+}> = {
   '課題訴求': {
     icon: AlertCircle, iconBg: 'bg-negative-50', iconColor: 'text-negative',
     cardBorder: 'border-neutral-200', cardBg: 'bg-white', headingColor: 'text-neutral-800',
+    labelEn: 'Challenge',
   },
   'ソリューション概要': {
     icon: Layers, iconBg: 'bg-primary-50', iconColor: 'text-primary',
     cardBorder: 'border-neutral-200', cardBg: 'bg-white', headingColor: 'text-neutral-800',
+    labelEn: 'Solution Overview',
   },
   '提供する価値': {
     icon: Target, iconBg: 'bg-primary', iconColor: 'text-white',
     cardBorder: 'border-primary-200', cardBg: 'bg-primary-50', headingColor: 'text-primary-800',
+    labelEn: 'Value Delivered',
   },
 }
 
@@ -74,6 +82,7 @@ export function ScenePage() {
   const navigate = useNavigate()
   const [fullscreen, setFullscreen] = useState(false)
   const { lang } = useOutletContext<{ lang: 'ja' | 'en' }>()
+  const t = useT()
 
   const scene = getSceneById(sceneId ?? '')
   if (!scene) return <div className="text-neutral-400">シーンが見つかりません</div>
@@ -102,7 +111,10 @@ export function ScenePage() {
             : 'bg-secondary-50 text-secondary-700 border-secondary-100'
         }`}>
           {scene.perspective === '管理者' ? <Settings size={12} /> : <User size={12} />}
-          {scene.perspective}視点
+          {t(
+            scene.perspective === '管理者' ? '管理者視点' : 'ユーザー視点',
+            scene.perspective === '管理者' ? 'Admin View' : 'User View',
+          )}
         </span>
         {lang === 'en' && !hasEnVideo && (
           <span className="inline-flex items-center px-2.5 py-1 rounded-full text-caption font-medium border border-amber-200 bg-amber-50 text-amber-700">
@@ -132,7 +144,7 @@ export function ScenePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-8 h-8 flex items-center justify-center rounded-lg bg-black/40 text-white hover:bg-black/60 transition-colors"
-                  title="別タブで開く"
+                  title={t('別タブで開く', 'Open in new tab')}
                 >
                   <ExternalLink size={14} />
                 </a>
@@ -140,7 +152,7 @@ export function ScenePage() {
               <button
                 onClick={() => setFullscreen(true)}
                 className="w-8 h-8 flex items-center justify-center rounded-lg bg-black/40 text-white hover:bg-black/60 transition-colors"
-                title="全画面"
+                title={t('全画面', 'Full screen')}
               >
                 <Maximize2 size={14} />
               </button>
@@ -151,7 +163,7 @@ export function ScenePage() {
             <div className="w-16 h-16 rounded-full border-2 border-neutral-700 flex items-center justify-center">
               <Play size={28} className="text-neutral-600 ml-1" />
             </div>
-            <div className="text-body text-neutral-500 font-medium">動画準備中</div>
+            <div className="text-body text-neutral-500 font-medium">{t('動画準備中', 'Video Coming Soon')}</div>
           </div>
         )}
       </div>
@@ -190,7 +202,9 @@ export function ScenePage() {
                   <div className={`w-6 h-6 rounded-md flex items-center justify-center shrink-0 ${style.iconBg}`}>
                     <Icon size={13} className={style.iconColor} />
                   </div>
-                  <span className={`text-body font-semibold ${style.headingColor}`}>{heading}</span>
+                  <span className={`text-body font-semibold ${style.headingColor}`}>
+                    {t(heading, style.labelEn)}
+                  </span>
                 </div>
                 <div className="px-5 py-4 space-y-2">
                   {renderBody(body)}
@@ -201,7 +215,7 @@ export function ScenePage() {
         </div>
       ) : (
         <div className="rounded-xl border border-neutral-100 bg-neutral-50 px-5 py-8 text-center text-caption text-neutral-400">
-          このシーンのドキュメントは準備中です
+          {t('このシーンのドキュメントは準備中です', 'Documentation for this scene is coming soon')}
         </div>
       )}
 
@@ -214,8 +228,8 @@ export function ScenePage() {
           >
             <ChevronLeft size={16} className="text-neutral-400 group-hover:text-primary shrink-0 transition-colors" />
             <div className="min-w-0">
-              <div className="text-tiny text-neutral-400">前のシーン</div>
-              <div className="text-caption font-medium text-neutral-700 group-hover:text-primary truncate transition-colors">{prevScene.scene}</div>
+              <div className="text-tiny text-neutral-400">{t('前のシーン', 'Previous')}</div>
+              <div className="text-caption font-medium text-neutral-700 group-hover:text-primary truncate transition-colors">{t(prevScene.scene, prevScene.sceneEn ?? prevScene.scene)}</div>
             </div>
           </button>
         ) : <div className="flex-1" />}
@@ -226,8 +240,8 @@ export function ScenePage() {
             className="flex-1 flex items-center gap-2 px-4 py-3 rounded-xl border border-neutral-100 bg-white hover:border-primary-200 hover:shadow-sm transition-all text-right group justify-end"
           >
             <div className="min-w-0">
-              <div className="text-tiny text-neutral-400">次のシーン</div>
-              <div className="text-caption font-medium text-neutral-700 group-hover:text-primary truncate transition-colors">{nextScene.scene}</div>
+              <div className="text-tiny text-neutral-400">{t('次のシーン', 'Next')}</div>
+              <div className="text-caption font-medium text-neutral-700 group-hover:text-primary truncate transition-colors">{t(nextScene.scene, nextScene.sceneEn ?? nextScene.scene)}</div>
             </div>
             <ChevronRight size={16} className="text-neutral-400 group-hover:text-primary shrink-0 transition-colors" />
           </button>
