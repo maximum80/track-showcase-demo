@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { ArrowRight, BarChart2, Briefcase, BookOpen, Users } from 'lucide-react'
 import { MODULES, getScenesByModule } from '../demo-data'
 import type { Module } from '../demo-data'
-import { useT } from '../lang-context'
+import { useT, useLang } from '../lang-context'
 
 const MODULE_CONFIG: Record<Module, {
   icon: React.ElementType
@@ -55,6 +55,7 @@ const MODULE_CONFIG: Record<Module, {
 export function TopPage() {
   const navigate = useNavigate()
   const t = useT()
+  const lang = useLang()
 
   return (
     <div className="space-y-8 pb-8">
@@ -79,7 +80,7 @@ export function TopPage() {
 
       {/* Minimap image */}
       <img
-        src="/track_minimap.png"
+        src={lang === 'en' ? '/track_minimap_EN.png' : '/track_minimap.png'}
         alt="Track Platform Overview"
         className="w-full h-auto block max-h-72 object-contain object-top"
       />
